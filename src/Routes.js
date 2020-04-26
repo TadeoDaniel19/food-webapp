@@ -2,6 +2,7 @@ import MemoR from './MemoR'
 import Hoc from './Hoc'
 import Home from './Home'
 import Should from './Should'
+import UseMemoR from './UseMemoR'
 
 
 const Routes = [
@@ -24,6 +25,11 @@ const Routes = [
     path: '/memo',
     sidebarName: 'React.Memo',
     component: MemoR
+  },
+  {
+    path: '/usememo',
+    sidebarName: 'useMemo',
+    component: UseMemoR
   }
 ];
 

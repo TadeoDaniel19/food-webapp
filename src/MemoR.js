@@ -1,56 +1,103 @@
-import React from 'react'
-import './styles/MemoR.css'
+import React, { useState } from 'react'
 
-function UserInfoNormal(props) {
-  const { name, avatar } = props;
-  console.log("NORMAL COMPONENT RENDERING");
-  return (
-    <div className="user-info">
-      <img src={avatar} alt={`${name}'s avatar`} />
-      <span>{name}</span>
-    </div>
-  );
-}
-
-const UserInfoMemo = React.memo(props => {
-  const { name, avatar } = props;
-  console.log("MEMO COMPONENT RENDERING");
-
-  return (
-    <div className="user-info">
-      <img src={avatar} alt={`${name}'s avatar`} />
-      <span>{name}</span>
-    </div>
-  );
-});
-
-class MemoR extends React.Component {
-  state = {
-    search: ""
-  };
-
-  render() {
-    return (
-      <div className="App">
-        <h1 />
-        <div>
-          <input
-            type="text"
-            onChange={e => this.setState({ search: e.target.value })}
-            value={this.state.search}
-            placeholder="Search"
-          />
-        </div>
-        <UserInfoNormal
-          name="Normal User"
-          avatar="https://via.placeholder.com/75x75"
-        />
-        <UserInfoMemo
-          name="Memo User"
-          avatar="https://via.placeholder.com/75x75"
-        />
-      </div>
-    );
+const Header = () => {
+  const styles = {
+    background: 'linear-gradient(20deg, #6813cb, #2575fc)',
+    textAlign: 'center',
+    borderRadius: '0.2em',
+    color: '#FFF',
+    padding: '0.3em',
+    margin: '0.3em',
+    fontSize: '14px'
   }
+
+  return (
+    <header style={styles}>
+      <h1>
+        React.memo  
+        <br></br>
+        <span
+          role='img'
+          aria-label='hook emoji'
+        >
+          ⚓
+        </span> 
+      </h1>
+    </header>
+  )
 }
+
+// React.memo() HOC
+const Counter = React.memo(({ count }) => {
+  console.log('%cRender <Counter />', 'color: blue')
+
+  return (
+    <h1>
+      { count }
+    </h1>
+  )
+})
+
+const Title = React.memo(({ text }) => {
+  console.log('%cRender <Title />', 'color: orangered')
+
+  return (
+    <h1>
+      { text }
+    </h1>
+  )
+})
+
+
+const TitleNested = React.memo(
+  ({ info }) => {
+    console.log('%cRender <TitleNested />', 'color: purple')
+
+    return (
+      <h1>
+        { info.text }
+      </h1>
+    )
+  },
+  (prevProps, nextProps) => {
+    // Si retorna true no se renderiza
+    // Si renorna false esta si se renderiza
+    // console.log(prevProps, nextProps)
+    return prevProps.info.text === nextProps.info.text
+  }
+)
+
+const MemoR = () => {
+  const [ title, setTitle ] = useState('')
+  const [ count, setCount ] = useState(0)
+  
+  const handleInput = (e) => {
+    setTitle(e.target.value)
+  }
+
+  const handleAdd = () => {
+    setCount(count + 1)
+  }
+
+  return (
+    <div>
+      <Header />
+      <input
+        type='text'
+        onChange={handleInput}
+      />
+      <button onClick={handleAdd}>
+        Add
+      </button>
+      <Counter count={count} />
+      <Title text={title} />
+      <TitleNested
+        info={{
+          text: title
+        }}
+      />
+    </div>
+  )
+}
+
 export default MemoR

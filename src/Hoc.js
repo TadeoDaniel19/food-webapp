@@ -19,7 +19,7 @@ const Header = () => {
   return (
     <header style={headerStyles}>
       <div>
-        ( Hijo â†â†’ Padre )
+        ( Hijo || Padre )
       </div>
       <div style={subtitleStyles}>
         <span>
@@ -28,9 +28,6 @@ const Header = () => {
         <br/>
         <span>
           High Order Component 
-        </span>
-        <span role='img' aria-label='flame' >
-          ðŸ”¥
         </span>
       </div>
     </header>
