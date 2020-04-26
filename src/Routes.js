@@ -1,4 +1,4 @@
-import React from 'react'
+import MemoR from './MemoR'
 import Hoc from './Hoc'
 import Home from './Home'
 import Should from './Should'
@@ -19,6 +19,11 @@ const Routes = [
     path: '/hoc',
     sidebarName: 'Hoc',
     component: Hoc
+  },
+  {
+    path: '/memo',
+    sidebarName: 'React.Memo',
+    component: MemoR
   }
 ];
 
