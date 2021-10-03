@@ -64,7 +64,7 @@ const NavigationBar = (props) => {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" className={classes.title}>
-              Sprint Tres
+              Comida
             </Typography>
           </Toolbar>
         </AppBar>

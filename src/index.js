@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
+import configureStore from './redux/store'
+
+const store = configureStore()
 
 const theme = createMuiTheme({
   palette: {
@@ -17,7 +20,7 @@ const theme = createMuiTheme({
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <BrowserRouter>
-      <App />
+      <App store={store}/>
     </BrowserRouter>
   </ThemeProvider>,
   document.getElementById('root'),

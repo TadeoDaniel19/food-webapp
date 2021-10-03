@@ -1,9 +1,6 @@
-import MemoR from './MemoR'
-import Hoc from './Hoc'
 import Home from './Home'
-import Should from './Should'
-import UseMemoR from './UseMemoR'
-
+import { Finder } from './components/finder'
+import AddFoodFormContainer from './containers/foodForm';
 
 const Routes = [
   {
@@ -12,24 +9,14 @@ const Routes = [
     component: Home
   },
   {
-    path: '/should',
-    sidebarName: 'Should Component',
-    component: Should
+    path: '/search',
+    sidebarName: 'Buscador',
+    component: Finder,
   },
   {
-    path: '/hoc',
-    sidebarName: 'Hoc',
-    component: Hoc
-  },
-  {
-    path: '/memo',
-    sidebarName: 'React.Memo',
-    component: MemoR
-  },
-  {
-    path: '/usememo',
-    sidebarName: 'useMemo',
-    component: UseMemoR
+    path: '/addFood',
+    sidebarName: 'Añadir Comida',
+    component: AddFoodFormContainer,
   }
 ];
 
