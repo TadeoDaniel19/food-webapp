@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 const AddFoodFormContainer = () => {
   const history = useHistory();
   const handleSubmit = (data) => {
-    axios.post('http://localhost:5000/food', {
+    axios.post('https://resource-food-api.herokuapp.com/food', {
       name: data.name,
       picture: data.picture,
       description: data.description,

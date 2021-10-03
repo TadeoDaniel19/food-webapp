@@ -17,7 +17,7 @@ const EditFood = () => {
   }, [id, dispatch])
 
   const handleSubmit = (data) => {
-    axios.put(`http://localhost:5000/food/${id}`, {
+    axios.put(`https://resource-food-api.herokuapp.com/food/${id}`, {
       name: data.name,
       picture: data.picture,
       description: data.description,
